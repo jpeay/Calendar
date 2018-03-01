@@ -1,22 +1,25 @@
-//const who = 'world';
-//console.log(`Hello ${who}`);
-//
-
 import React from 'react'
 import { render } from 'react-dom'
+import moment from 'moment'
+
+import BigCalendar from 'react-big-calendar'
+// a localizer for BigCalendar
+BigCalendar.momentLocalizer(moment)
+
+// this weird syntax is just a shorthand way of specifying loaders
+require('style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css')
 
 class App extends React.Component {
   constructor () {
     super()
-    this.state = {
-      who: "React"
-    }
   }
   render () {
     return (
-      <div>
-        <p>Hello world!</p>
-      </div>
+      // React Components in JSX look like HTML tags
+      <BigCalendar
+        style={{height: '420px'}}
+        events={[]}
+      />
     )
   }
 }
