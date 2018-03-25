@@ -27,6 +27,7 @@
     "react-big-calendar": "^0.18.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.2",
+    "superagent": "^3.8.2",
     "webpack": "^3.11.0"
   },
   "babel": {
@@ -34,5 +35,8 @@
       "react",
       "es2015"
     ]
+  },
+  "dependencies": {
+    "mongoose": "^5.0.11"
   }
 }

@@ -1,24 +1,34 @@
 import React from 'react'
 import { render } from 'react-dom'
 import moment from 'moment'
-
+import mongoose from 'mongoose'
 import BigCalendar from 'react-big-calendar'
-// a localizer for BigCalendar
 BigCalendar.momentLocalizer(moment)
 
-// this weird syntax is just a shorthand way of specifying loaders
+import { getEvents } from './gcal';
+
 require('style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css')
 
 class App extends React.Component {
   constructor () {
     super()
+    this.state = {
+      events: []
+    }
+  }
+  componentDidMount () {
+    getEvents((events) => {
+      this.setState({events})
+    })
+    const mongoose = require('mongoose');
+    mongoose.connect('ds137957.mlab.com:37957/fsjs');
   }
   render () {
     return (
       // React Components in JSX look like HTML tags
       <BigCalendar
         style={{height: '420px'}}
-        events={[]}
+        events={this.state.events}
       />
     )
   }
