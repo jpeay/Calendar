@@ -1,3 +1,4 @@
+// importing components
 import React from 'react'
 import { render } from 'react-dom'
 import moment from 'moment'
@@ -9,13 +10,16 @@ import { getEvents } from './gcal';
 
 require('style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css')
 
+// creating new react component
 class App extends React.Component {
   constructor () {
     super()
+    // setting initial state
     this.state = {
       events: []
     }
   }
+  // on component load 
   componentDidMount () {
     getEvents((events) => {
       this.setState({events})
@@ -25,7 +29,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      // React Components in JSX look like HTML tags
+      // react Components
       <BigCalendar
         style={{height: '420px'}}
         events={this.state.events}
@@ -33,5 +37,5 @@ class App extends React.Component {
     )
   }
 }
-
+// render component
 render(<App />, document.getElementById('root'))
